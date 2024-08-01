@@ -2,8 +2,8 @@
 
 const Root = () => {
     return (
-        <div>
-            
+        <div className=" text-red-500">
+           This is the root component 
         </div>
     );
 };
