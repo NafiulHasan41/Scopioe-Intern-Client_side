@@ -180,7 +180,7 @@ const Login = () => {
     );
 
 
-
+  // it was confusing figma file, it took much time to understand the design of mobile login page but in the end I got it right, I think.
 
     return (
         <div className=" w-full md:w-[95%] mx-auto p-0 ">
