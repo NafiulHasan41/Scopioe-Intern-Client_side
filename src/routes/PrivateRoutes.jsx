@@ -12,6 +12,17 @@ const PrivateRoute = ({children}) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
+    const loginMessage = () => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Please Login First",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    }
+
 
     if (loading) {
         return (<Auth_Skeleton/>);
@@ -24,16 +35,9 @@ const PrivateRoute = ({children}) => {
  
      
     return <>
-    { 
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "You need login first",
-                showConfirmButton: false,
-                timer: 1000
-            })}
+      {loginMessage()}
      <Navigate to="/login" state={{ from: location.pathname }} />; 
-     
+  
      </>
 
    
