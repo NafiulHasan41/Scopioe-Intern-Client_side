@@ -193,7 +193,7 @@ const Login = () => {
             <div className=" flex-1 text-center lg:text-left">
               <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/35 py-[30px] px-[35px] rounded-[10px] max-h-[1433px] max-w-[341px] ">
+               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/35 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]" ><span className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Sign In </span>to view all the</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">massage therapists</h1>
                  <p ></p>

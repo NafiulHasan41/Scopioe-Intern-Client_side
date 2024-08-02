@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoutes'
 import Home from '../Pages/Home/Home'
 import Login from '../Pages/Authentication/Login'
 import New_listing from '../Pages/New_Listing/New_listing'
+import Register from '../Pages/Authentication/Register'
 
 
 
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
     {
       path:"/login",
       element:<Login/>
-    }
+    },
+    {
+      path:"/register",
+      element:<Register/>
+    },
    
    
   ])

@@ -1,21 +1,45 @@
 import {  useState } from "react"; import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { IoEye ,IoEyeOff } from "react-icons/io5";
-import useAuth from "../../hooks/useAuth";
 import Auth_slider from "../../Components/Slider/Auth_slider";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 
 const Register = () => {
 
     const [ pass , setPass] = useState(false);
+    const [ pass2 , setPass2] = useState(false);
 
     const navigate = useNavigate();
-    const { createUser , logOut } = useAuth();
+    const { createUser , logOut ,setLoading } = useAuth();
+
+    // success and error messages
+    const onSuccess = ()=> {
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1000
+      })
+    }
+  
+      const onError = (err) => { 
+        
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: err,
+          showConfirmButton: false,
+          timer: 1500
+      })
+         
+      }
 
     const handleRegister = e => {
 
@@ -26,15 +50,18 @@ const Register = () => {
         const name = form.get('name');
         const email = form.get('email');
         const password = form.get('password');
-        const photoUrl = form.get('url');
+        const confirm_password = form.get('confirm_password');
 
         if(password.length < 6){
-            toast.error('Password must be at least 6 characters');
+            onError('Password must be at least 6 characters');
             return;
         }
         else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.*[a-zA-Z]).{8,}$/.test(password)){
-            
-            toast.error('Password must contain at least one uppercase letter, one lowercase letter, one number and one special character');
+            onError('Password must contain at least one uppercase letter, one lowercase letter, one number and one special character');
+            return;
+        }
+        else if(password !== confirm_password){
+            onError('Passwords do not match');
             return;
         }
 
@@ -48,37 +75,99 @@ const Register = () => {
              
                 updateProfile(result.user, { 
                     displayName: name,
-                    photoURL: photoUrl
                   }).then(() => {
 
-                    
-                    toast.success('User Created Successfully');
+                    onSuccess();
                     logOut().then( () => {
-                        
+                        setLoading(false);
                         navigate('/login');
+
                     
                     })
                     .catch((error) => {
-                    
-                        toast.error(error.message);
+                        onError(error?.message);
+                       
     
                       });
 
                   }).catch((error) => {
-                    
-                    toast.error(error.message);
-
+                    onError(error?.message);
                   });
               
                
             })
             .catch(error => {
-                toast.error(error.message);
+                onError(error?.message);
             })
 
 
         }
 
+        
+    const customRegisterForm = (
+        <>
+        <div>
+        <form onSubmit={handleRegister} className="">
+                <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-[16px] text-[#152A16] font-medium">Name</span>
+                        </label>
+                        <input type="text" name="name" placeholder="@username" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control my-[24px]">
+                        <label className="label">
+                            <span className="label-text text-[16px] text-[#152A16] font-medium">Email</span>
+                        </label>
+                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control mb-[24px]">
+                        <label className="label">
+                            <span className="label-text text-[16px] text-[#152A16] font-medium">Password</span>
+                        </label>
+                        <div className=" relative">
+
+                       <input type={ pass? "text" : "password" } name="password" placeholder="Enter your password"
+                           className="input input-bordered w-full" required />
+                       <span onClick={()=> setPass(!pass)} className=" text-2xl absolute top-3 right-3">{ pass ?
+                           <IoEye /> :
+                           <IoEyeOff /> }</span>
+
+                   </div>
+
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-[16px] text-[#152A16] font-medium">Confirm Password</span>
+                        </label>
+                        <div className=" relative">
+
+                       <input type={ pass2? "text" : "password" } name="confirm_password" placeholder="Re-type password"
+                           className="input input-bordered w-full" required />
+                       <span onClick={()=> setPass2(!pass2)} className=" text-2xl absolute top-3 right-3">{ pass2 ?
+                           <IoEye /> :
+                           <IoEyeOff /> }</span>
+
+                   </div>
+
+                    </div>
+
+                    <div className="form-control mt-[17px]">
+                    <div className=" flex gap-2">
+                          <input type="checkbox" name="remember_me"  className="checkbox text-[#5C635A] " />
+                          <p className=" text-[#5C635A] font-normal text-[14px]">Remember me</p>
+                          </div>
+                    </div>
+                    <div className="form-control mt-[30px] w-[270px] h-[55px] mx-auto rounded-[10px] ">
+                        <button className="rounded-[10px]  py-[16px] px-[40px] text-[#FFFFFF] text-[16px] font-semibold bg-[#4285F3] border-none text-xs md:text-xl ">Sign up</button>
+                    </div>
+                </form>
+
+                <label className="label text-center  justify-center text-[15px] font-medium mt-[16px]">
+                        <p className=" mx-1 text-[#142D3A] font-bold">Already Have an Account?</p><Link to="/login"  className="link  text-[#156BCA]">Log In </Link>
+                 </label>
+        </div>
+        </>
+    );
 
 
 
@@ -88,71 +177,35 @@ const Register = () => {
 
 
     return (
-        <div className="w-[95%] mx-auto mt-10 mb-10">
+        <div className="w-[95%] mx-auto lg:mt-8">
              <Helmet>
-            <title>TherapyNest : Register</title>
+            <title>TherapyNest : Create Account</title>
         </Helmet>
        <div className="hero gap-1 md:min-h-[500px]  rounded-3xl ">
-        <div className="hero-content  w-full flex-col lg:flex-row">
+        <div className="hero-content  w-full flex-col lg:flex-row-reverse">
             <div className="flex-1 text-center lg:text-left">
             <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] ">
+               <div className=" absolute top-[332px] left-[230px]  z-50 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
                  <h1 className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Create Account</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">Fill in Your Information</h1>
                </div>
               </div>
             </div>
-            <div className=" flex-1 card shrink-0 w-full max-w-sm md:max-w-full shadow-2xl bg-[#a0c5c4]">
-                <form onSubmit={handleRegister} className="card-body">
-                <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-[#86664b] text-xl font-bold">Name</span>
-                        </label>
-                        <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-[#86664b] text-xl font-bold">Email</span>
-                        </label>
-                        <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-[#86664b] text-xl font-bold">Password</span>
-                        </label>
-                        <div className=" relative">
-
-                       <input type={ pass? "text" : "password" } name="password" placeholder="password"
-                           className="input input-bordered w-full" required />
-                       <span onClick={()=> setPass(!pass)} className=" text-2xl absolute top-3 right-3">{ pass ?
-                           <IoEye /> :
-                           <IoEyeOff /> }</span>
-
-                   </div>
-
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-[#86664b] text-xl font-bold">Image URL</span>
-                        </label>
-                        <input type="url" name="url" placeholder="URL" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control mt-6">
-                        <button className="btn   text-[#86664b] border-none text-xs md:text-xl">Register</button>
-                    </div>
-                </form>
-
-                <label className="label text-center  justify-center text-[16px]">
-                    <p className=" mx-1 font-bold text-[#86664b]"> Already have an account ?</p>
-                    <Link to="/login" className="label-text-alt btn  border-none  text-[16px] text-[#86664b]">
-                    Login</Link>
-                </label>
+            <div className=" flex-1  shrink-0 w-full max-w-sm md:max-w-[450px] ">
+                <div className=" mb-[40px]">
+                            {/* logo */}
+                            <img className=" w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+                            <h1 className=" text-[#152A16] mt-[32px] mb-[24px] text-[30px] font-semibold h-[24px]">Sign In To Your Account</h1>
+                            <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome Back! By click the sign up button, you're agree
+                                to
+                                Zenitood Terms and Service and acknlowledge the
+                                <Link to="/privacy_and_policy"  className="link  text-[#156BCA]"> Privacy and Policy</Link></p>
+                </div>
+               {customRegisterForm}
             </div>
         </div>
     </div>
-    <ToastContainer />
 </div>
     );
 };

@@ -15,7 +15,7 @@ const Auth_slider = () => {
       <Swiper
        pagination={true}
        autoplay={{
-        delay: 2500,
+        delay: 2000,
         disableOnInteraction: false,
       }}
         modules={[Autoplay , Pagination]}
