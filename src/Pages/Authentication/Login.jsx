@@ -120,49 +120,60 @@ const Login = () => {
 
     const customForm = (
       <>
-       <div>
+       <div className=" md:max-w-[450px]">
         <div>
           {/* logo */}
-          <img src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+          <img className=" w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+          <h1 className=" text-[#152A16] my-[25px] text-[30px] font-semibold h-[24px]">Log In To Your Account</h1>
+          <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome back! Select a method to log in:</p>
+          {/* social login */}
+          <div className=" flex justify-between mb-[32px] ">
+                    <button onClick={handleGoogleLogin} className=" w-[178px] h-[55px]  border-none rounded-[6px] text-2xl bg-gradient-to-r from-black/10 to-gray-50 shadow-xl shadow-black/35 "> <p className="flex gap-2 justify-center"><FcGoogle/> <span className=" text-[#152A16] text-center text-[16px] font-normal ">Google</span></p>  </button>
+                    <button onClick={handleFacebookLogin} className="w-[205px] h-[55px] border-none rounded-[6px] text-2xl  bg-[#298FFF] font-extrabold shadow-xl shadow-black/35 ">  <p className=" flex gap-2 justify-center"><span className=" text-blue-600  "><FaFacebook/></span><span className=" text-[#FFF] font-normal text-[16px] ">Facebook</span> </p> </button>
+           </div>
         </div>
-       <form onSubmit={handleLogin} className="card-body">
+        <div>
+          <p className=" divider text-[#5C635A] text-[14px] font-normal mb-[32px]">Or Continue with Email</p>
+        </div>
+       <form onSubmit={handleLogin} className="">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-xl text-[#86664b] font-bold">Email</span>
+                            <span className="label-text text-[16px] text-[#152A16] font-medium ">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                        <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" required />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control mt-[28px]">
                         <label className="label">
-                            <span className="label-text text-xl text-[#86664b] font-bold">Password</span>
+                            <span className="label-text text-[16px] text-[#152A16] font-medium ">Password</span>
                             
                         </label>
                        <div className=" relative"> 
 
-                       <input type={ pass? "text" : "password"} name="password" placeholder="password" className="input input-bordered w-full" required />
+                       <input type={ pass? "text" : "password"} name="password" placeholder="Enter your password " className="input input-bordered w-full" required />
                         <span  onClick={() => setPass(!pass)} className=" text-2xl absolute top-3 right-3">{ pass ? <IoEye/> : <IoEyeOff/> }</span>
 
-                       </div>
-                        
-                       
-                        
-                       
+                       </div>            
                     </div>
-                    <div className="form-control mt-6">
-                        <button className="btn  text-[#86664b] border-none text-xs md:text-xl ">Login</button>
+                    <div className=" flex justify-between mt-[16px]">
+                          <div className=" flex gap-2">
+                          <input type="checkbox"  className="checkbox text-[#5C635A] " />
+                          <p className=" text-[#5C635A] font-normal text-[14px]">Remember me</p>
+                          </div>
+                          <div>
+                            <Link to="/forgot-password" className=" link  text-[#156BCA] text-[14px] font-medium">Forgot Password?</Link>
+                          </div>
+                       </div>
+                    <div className="form-control mt-[65px] w-[270px] h-[55px] mx-auto rounded-[10px] ">
+                        <button className="rounded-[10px]  py-[16px] px-[40px] text-[#FFFFFF] text-[16px] font-semibold bg-[#156BCA] border-none text-xs md:text-xl ">Sign in</button>
                     </div>
 
                 </form>
 
-                <div className=" text-center">
-                     <p className=" mb-2 text-[#86664b] text-center text-xl"> Login with </p>
-                    <button onClick={handleGoogleLogin} className="btn border-none text-2xl mx-5">  <FcGoogle/> </button>
-                    <button onClick={handleFacebookLogin} className="btn border-none text-2xl text-blue-600 font-extrabold">  <FaFacebook/> </button>
-                </div>
+              
 
-                <label className="label text-center  justify-center text-xl">
-                        <p className=" mx-3 text-[#86664b] font-bold"> New User ?</p>    <Link to="/register"  className="label-text-alt btn  border-none  text-xl text-[#86664b]"> Register</Link>
-                        </label>
+                <label className="label text-center  justify-center text-[15px] font-medium mt-[16px]">
+                        <p className=" mx-1 text-[#142D3A] font-bold">Don’t Have an Account?</p><Link to="/register"  className="link  text-[#156BCA]">Create Account</Link>
+                 </label>
        </div>
 
       </>
@@ -172,7 +183,7 @@ const Login = () => {
 
 
     return (
-        <div className="w-[95%] mx-auto mb-10">
+        <div className="w-[95%] mx-auto lg:mt-14">
 
           <Helmet>
             <title>TherapyNest : Login</title>
@@ -182,7 +193,7 @@ const Login = () => {
             <div className=" flex-1 text-center lg:text-left">
               <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] max-h-[1433px] max-w-[341px] ">
+               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/35 py-[30px] px-[35px] rounded-[10px] max-h-[1433px] max-w-[341px] ">
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]" ><span className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Sign In </span>to view all the</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">massage therapists</h1>
                  <p ></p>
@@ -190,7 +201,7 @@ const Login = () => {
               </div>
                 
             </div>
-            <div className=" flex-1 card shrink-0 w-full max-w-sm md:max-w-full shadow-2xl bg-[#a0c5c4] ">
+            <div className=" flex-1  shrink-0 w-full max-w-sm md:max-w-full  ">
                {customForm}
             </div>
         </div>
