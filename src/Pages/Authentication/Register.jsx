@@ -182,11 +182,11 @@ const Register = () => {
             <title>TherapyNest : Create Account</title>
         </Helmet>
        <div className="hero gap-1 md:min-h-[500px]  rounded-3xl ">
-        <div className="hero-content  w-full flex-col lg:flex-row-reverse">
+        <div className="hero-content  w-full flex-col lg:flex-row-reverse lg:gap-[130px]">
             <div className="flex-1 text-center lg:text-left">
             <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] left-[230px]  z-50 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
+               <div className=" absolute top-[332px] left-[170px] z-20 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
                  <h1 className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Create Account</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">Fill in Your Information</h1>
                </div>
@@ -197,7 +197,7 @@ const Register = () => {
                             {/* logo */}
                             <img className=" w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
                             <h1 className=" text-[#152A16] mt-[32px] mb-[24px] text-[30px] font-semibold h-[24px]">Sign In To Your Account</h1>
-                            <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome Back! By click the sign up button, you're agree
+                            <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome Back! By click the sign up button, you&apos;re agree
                                 to
                                 Zenitood Terms and Service and acknlowledge the
                                 <Link to="/privacy_and_policy"  className="link  text-[#156BCA]"> Privacy and Policy</Link></p>

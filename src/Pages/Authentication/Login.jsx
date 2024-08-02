@@ -120,16 +120,16 @@ const Login = () => {
 
     const customForm = (
       <>
-       <div className=" md:max-w-[450px]">
+       <div className=" max-w-[430px] w-full  md:max-w-[450px]">
         <div>
           {/* logo */}
-          <img className=" w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
-          <h1 className=" text-[#152A16] my-[25px] text-[30px] font-semibold h-[24px]">Log In To Your Account</h1>
-          <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome back! Select a method to log in:</p>
+          <img className=" hidden md:block w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+          <h1 className=" text-[#152A16] md:mt-[35px] mb-[18px]  md:my-[25px] md:text-[30px] font-semibold h-[24px]">Log In To Your Account</h1>
+          <p className=" text-[#5C635A] text-[14px] md:text-[16px] font-normal mb-[40px]">Welcome back! Select a method to log in:</p>
           {/* social login */}
           <div className=" flex justify-between mb-[32px] ">
-                    <button onClick={handleGoogleLogin} className=" w-[178px] h-[55px]  border-none rounded-[6px] text-2xl bg-gradient-to-r from-black/10 to-gray-50 shadow-xl shadow-black/35 "> <p className="flex gap-2 justify-center"><FcGoogle/> <span className=" text-[#152A16] text-center text-[16px] font-normal ">Google</span></p>  </button>
-                    <button onClick={handleFacebookLogin} className="w-[205px] h-[55px] border-none rounded-[6px] text-2xl  bg-[#298FFF] font-extrabold shadow-xl shadow-black/35 ">  <p className=" flex gap-2 justify-center"><span className=" text-blue-600  "><FaFacebook/></span><span className=" text-[#FFF] font-normal text-[16px] ">Facebook</span> </p> </button>
+                    <button onClick={handleGoogleLogin} className="w-[146px] h-[45px] md:w-[178px] md:h-[55px]  border-none rounded-[6px] text-[20px] md:text-2xl bg-gradient-to-r from-black/10 to-gray-50 shadow-xl shadow-black/35 "> <p className="flex gap-2 justify-center"><FcGoogle/> <span className=" text-[#152A16] text-center text-[16px] font-normal ">Google</span></p>  </button>
+                    <button onClick={handleFacebookLogin} className="w-[150px] h-[45px] md:w-[205px] md:h-[55px] border-none rounded-[6px] text-[20px] md:text-2xl  bg-[#298FFF] font-extrabold shadow-xl shadow-black/35 ">  <p className=" flex gap-2 justify-center"><span className=" text-blue-600  "><FaFacebook/></span><span className=" text-[#FFF] font-normal text-[16px] ">Facebook</span> </p> </button>
            </div>
         </div>
         <div>
@@ -163,7 +163,7 @@ const Login = () => {
                             <Link to="/forgot-password" className=" link  text-[#156BCA] text-[14px] font-medium">Forgot Password?</Link>
                           </div>
                        </div>
-                    <div className="form-control mt-[65px] w-[270px] h-[55px] mx-auto rounded-[10px] ">
+                    <div className="form-control mt-5 md:mt-[65px] w-[270px] h-[55px] mx-auto rounded-[10px] ">
                         <button className="rounded-[10px]  py-[16px] px-[40px] text-[#FFFFFF] text-[16px] font-semibold bg-[#156BCA] border-none text-xs md:text-xl ">Sign in</button>
                     </div>
 
@@ -171,7 +171,7 @@ const Login = () => {
 
               
 
-                <label className="label text-center  justify-center text-[15px] font-medium mt-[16px]">
+                <label className="label text-center  justify-center text-[15px] font-medium mb-[60px] md:mb-0 md:mt-[16px]">
                         <p className=" mx-1 text-[#142D3A] font-bold">Don’t Have an Account?</p><Link to="/register"  className="link  text-[#156BCA]">Create Account</Link>
                  </label>
        </div>
@@ -183,26 +183,38 @@ const Login = () => {
 
 
     return (
-        <div className="w-[95%] mx-auto lg:mt-14">
+        <div className=" w-full md:w-[95%] mx-auto p-0 ">
 
           <Helmet>
             <title>TherapyNest : Login</title>
         </Helmet>
-       <div className="hero gap-1 md:min-h-[500px] mt-3 ">
-        <div className="hero-content w-full mx-auto flex-col lg:flex-row-reverse">
-            <div className=" flex-1 text-center lg:text-left">
+       <div className="hero gap-1 md:min-h-[500px] p-0 ">
+        <div className=" md:hero-content  md:w-full md:mx-auto md:flex-col lg:flex-row-reverse">
+            <div className=" sticky md:static top-0 -z-50 flex-1 text-center lg:text-left">
               <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] right-[153px]  z-50 bg-[#152A16]/35 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
+               <div className=" absolute top-[346px] right-[65px] md:top-[332px] md:right-[153px]  z-20 bg-[#152A16]/35 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]" ><span className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Sign In </span>to view all the</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">massage therapists</h1>
-                 <p ></p>
+                
                </div>
+               <div className="md:hidden absolute top-[64px] left-[170px]  z-20">
+                <img className="  w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
               </div>
+              </div>
+
+              
                 
             </div>
-            <div className=" flex-1  shrink-0 w-full max-w-sm md:max-w-full  ">
-               {customForm}
+            <div className="  md:bg-none z-50 md:z-0 md:flex-1  md:shrink-0  mx-auto  max-w-[430px]   md:p-0 w-full  md:max-w-full  ">
+              <div className=" mb-[20px]">
+              <h1 className=" text-center text-[#fff] text-[18px] font-medium h-[35px]" ><span className=" text-center text-[#FFF] text-[18px] font-semibold h-[35px]">Sign In </span>to view all the</h1>
+              <h1 className=" text-center text-[#fff] text-[18px] font-medium h-[35px]">massage therapists</h1>
+              </div>
+              <div className="bg-white w-full  p-8 rounded-t-[40px]">
+                 {customForm}
+              </div>
+               
             </div>
         </div>
     </div>
