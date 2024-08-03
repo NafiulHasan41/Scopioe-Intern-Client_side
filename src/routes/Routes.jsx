@@ -6,7 +6,7 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/Authentication/Login'
 import New_listing from '../Pages/New_Listing/New_listing'
 import Register from '../Pages/Authentication/Register'
-import PopularCities from '../Pages/Home/PopularCities'
+
 
 
 
@@ -27,11 +27,7 @@ const router = createBrowserRouter([
           element:(<PrivateRoute><New_listing/></PrivateRoute>),
         }
         ,
-        {
-          path:"/search",
-          element:<PopularCities/>
-          
-        }
+       
 
         
        
