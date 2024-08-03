@@ -7,10 +7,10 @@ import Login from '../Pages/Authentication/Login'
 import New_listing from '../Pages/New_Listing/New_listing'
 import Register from '../Pages/Authentication/Register'
 import Search from '../Pages/Search'
-import About from '../Pages/about'
 import Favorite from '../Pages/Favorite'
 import Help_center from '../Pages/Help_center'
 import Setting from '../Pages/Setting'
+import About_Website from '../Pages/About_Website'
 
 
 
@@ -35,12 +35,12 @@ const router = createBrowserRouter([
         
         {
           path:"/search",
-          element:(<PrivateRoute><Search/></PrivateRoute>),
+          element:(<Search/>),
         }
         ,
         {
           path:"/about",
-          element:(<PrivateRoute><About/></PrivateRoute>),
+          element:(<PrivateRoute><About_Website/></PrivateRoute>),
         }
         ,
        

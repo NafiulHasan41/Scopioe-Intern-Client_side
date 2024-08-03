@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const TherapistCard = ( {therapist} ) => {
-    const { imageUrl , name , zipcode , cityName ,therapicenter } = therapist;
+    const { imageUrl , name , zipCode , cityName ,therapicenter } = therapist;
     return (
  <div className=" relative w-[178px] h-[253px] md:h-[303px] rounded-[10px] bg-[#FFFFFF] border-spacing-1 border-[#E7E7E7]">
   <figure className="px-[8px] pt-[8px] md:px-[10px] md:pt-[10px]">
@@ -15,7 +15,7 @@ const TherapistCard = ( {therapist} ) => {
   </figure>
   <div className=" m-[13px] md:m-[16px] ">
     <h1 className=" text-[#152A16] text-xs  md:text-[14px] font-medium  ">{name}</h1>
-    <p className=" text-[10px] md:text-[13px] font-normal font-[#5C635A] flex gap-[5px] items-center "> <IoLocationSharp />{zipcode} , {cityName}</p>
+    <p className=" text-[10px] md:text-[13px] font-normal font-[#5C635A] flex gap-[5px] items-center "> <IoLocationSharp />{zipCode} , {cityName}</p>
     <p className=" text-[10px] md:text-[13px] font-normal font-[#5C635A] flex gap-[5px] items-center "> <FaCar />{therapicenter}</p>
     
   </div>
