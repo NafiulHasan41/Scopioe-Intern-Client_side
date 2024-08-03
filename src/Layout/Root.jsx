@@ -17,8 +17,11 @@ const Root = () => {
                 <div className="max-h-[88px] ">
                     <Top_navbar/>
                 </div>
-                <div className="flex-1">
-                  <Outlet/>
+                <div className="flex-1 bg-[#EEF2F5]">
+                    <div className=" max-w-[1130px] m-[30px] mx-auto">
+                    <Outlet/>
+                    </div>
+                  
                 </div>
             </div>
            

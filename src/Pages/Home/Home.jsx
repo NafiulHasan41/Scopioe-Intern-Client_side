@@ -1,9 +1,13 @@
+import SearchHome from "./SearchHome";
 
 
 const Home = () => {
     return (
         <div>
-            This is home page
+            <div>
+                {/* section search */}
+                <SearchHome/>
+            </div>
         </div>
     );
 };
