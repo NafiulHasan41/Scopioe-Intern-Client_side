@@ -18,9 +18,7 @@ const router = createBrowserRouter([
         {
             index: true,
             element:(
-              <PrivateRoute>
-                <Home/>
-              </PrivateRoute>
+              <Home/>
             ),
         },
         {
