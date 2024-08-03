@@ -183,7 +183,7 @@ const Login = () => {
   // it was confusing figma file, it took much time to understand the design of mobile login page but in the end I got it right, I think.
 
     return (
-        <div className=" w-full md:w-[95%] mx-auto p-0 ">
+        <div className=" w-full md:w-[95%] mx-auto p-0 md:mt-8 ">
 
           <Helmet>
             <title>TherapyNest : Login</title>
@@ -207,7 +207,7 @@ const Login = () => {
                 
             </div>
             <div className="  md:bg-none z-50 md:z-0 md:flex-1  md:shrink-0  mx-auto  max-w-[430px]   md:p-0 w-full  md:max-w-full  ">
-              <div className=" mb-[20px]">
+              <div className=" md:hidden mb-[20px]">
               <h1 className=" text-center text-[#fff] text-[18px] font-medium h-[35px]" ><span className=" text-center text-[#FFF] text-[18px] font-semibold h-[35px]">Sign In </span>to view all the</h1>
               <h1 className=" text-center text-[#fff] text-[18px] font-medium h-[35px]">massage therapists</h1>
               </div>

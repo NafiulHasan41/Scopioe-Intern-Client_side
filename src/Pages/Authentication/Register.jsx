@@ -6,6 +6,7 @@ import { IoEye ,IoEyeOff } from "react-icons/io5";
 import Auth_slider from "../../Components/Slider/Auth_slider";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import Auth_Skeleton from "../Skeleton/Auth_Skeleton";
 
 
 
@@ -14,8 +15,10 @@ const Register = () => {
     const [ pass , setPass] = useState(false);
     const [ pass2 , setPass2] = useState(false);
 
+
+
     const navigate = useNavigate();
-    const { createUser , logOut ,setLoading } = useAuth();
+    const { createUser , logOut ,setLoading, loading } = useAuth();
 
     // success and error messages
     const onSuccess = ()=> {
@@ -23,7 +26,7 @@ const Register = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "User Created Successfully",
+          title: "User Created Successfully. Please Login",
           showConfirmButton: false,
           timer: 1000
       })
@@ -52,8 +55,10 @@ const Register = () => {
         const password = form.get('password');
         const confirm_password = form.get('confirm_password');
 
-        if(password.length < 6){
-            onError('Password must be at least 6 characters');
+        // console.log(name, email, password, confirm_password);
+
+        if(password.length < 8){
+            onError('Password must be at least 8 characters');
             return;
         }
         else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.*[a-zA-Z]).{8,}$/.test(password)){
@@ -61,7 +66,7 @@ const Register = () => {
             return;
         }
         else if(password !== confirm_password){
-            onError('Passwords do not match');
+            onError('Passwords do not match check again');
             return;
         }
 
@@ -103,11 +108,13 @@ const Register = () => {
 
         }
 
+
+
         
     const customRegisterForm = (
         <>
-        <div>
-        <form onSubmit={handleRegister} className="">
+        <div >
+        <form onSubmit={handleRegister} className=" ">
                 <div className="form-control">
                         <label className="label">
                             <span className="label-text text-[16px] text-[#152A16] font-medium">Name</span>
@@ -169,7 +176,12 @@ const Register = () => {
         </>
     );
 
-
+   
+    if(loading){
+        return(
+            <Auth_Skeleton/>
+        );
+    }
 
 
 
@@ -177,32 +189,62 @@ const Register = () => {
 
 
     return (
-        <div className="w-[95%] mx-auto lg:mt-8">
+        <div className=" w-full md:w-[95%] mx-auto lg:mt-8 p-0">
              <Helmet>
             <title>TherapyNest : Create Account</title>
         </Helmet>
        <div className="hero gap-1 md:min-h-[500px]  rounded-3xl ">
-        <div className="hero-content  w-full flex-col lg:flex-row-reverse lg:gap-[130px]">
-            <div className="flex-1 text-center lg:text-left">
+        <div className="md:hero-content md: w-full md:flex-col lg:flex-row-reverse lg:gap-[130px]">
+            <div className="sticky md:static top-0 -z-50 flex-1 text-center lg:text-left">
             <div className=" relative">
               <Auth_slider/>
-               <div className=" absolute top-[332px] left-[170px] z-20 bg-[#152A16]/30 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
+               <div className=" absolute top-[450px] left-[55px] md:top-[332px] md:left-[170px] z-20 bg-[#152A16]/40 py-[30px] px-[35px] rounded-[10px] max-h-[143px] max-w-[341px] ">
                  <h1 className=" text-center text-[#156BCA] text-[22px] font-semibold h-[35px]">Create Account</h1>
                  <h1 className=" text-center text-[#fff] text-[22px] font-medium h-[35px]">Fill in Your Information</h1>
                </div>
+               <div className="md:hidden absolute top-[64px]   z-20">
+                {/* logo */}
+                <img className=" mx-auto  w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+                            <h1 className=" text-[#152A16] mt-[100px] mb-[24px] text-[30px] font-semibold h-[24px]">Sign In To Your Account</h1>
+                            <p className=" text-[#D1D1D1] text-[16px] font-normal mb-[40px]">Welcome Back! By click the sign up button, you&apos;re agree
+                                to
+                                TherapyNest Terms and Service and acknowledge the
+                                <Link to="/privacy_and_policy"  className="link  text-[#156BCA]"> Privacy and Policy</Link></p>
+              </div>
+
+             
+
+
               </div>
             </div>
-            <div className=" flex-1  shrink-0 w-full max-w-sm md:max-w-[450px] ">
-                <div className=" mb-[40px]">
+            <div className=" md:bg-none z-50 md:z-0 md:flex-1  md:shrink-0 w-full md:max-w-[450px] ">
+                <div className=" hidden md:block md:mb-[40px]">
                             {/* logo */}
-                            <img className=" w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+                            <img className="  w-[110px] " src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
                             <h1 className=" text-[#152A16] mt-[32px] mb-[24px] text-[30px] font-semibold h-[24px]">Sign In To Your Account</h1>
                             <p className=" text-[#5C635A] text-[16px] font-normal mb-[40px]">Welcome Back! By click the sign up button, you&apos;re agree
                                 to
-                                Zenitood Terms and Service and acknlowledge the
+                                TherapyNest Terms and Service and acknowledge the
                                 <Link to="/privacy_and_policy"  className="link  text-[#156BCA]"> Privacy and Policy</Link></p>
                 </div>
-               {customRegisterForm}
+                <div className=" max-w-[430] mx-auto  md:hidden ">
+                    <div className=" mb-6">
+                    <h1 className=" text-center text-[#FFF] text-[18px] font-semibold h-[35px]">Create Account</h1>
+                    <h1 className=" text-center text-[#fff] text-[18px] font-medium h-[35px]">Fill in Your Information</h1>
+                    </div>
+                    <div className="p-5 bg-white rounded-t-[40px] pb-[70px] ">
+                    <div className=" text-center">
+                    <h1 className=" text-[#152A16] md:mt-[35px] md:mb-[18px]  md:my-[25px] md:text-[30px] font-semibold h-[24px]">Sign In</h1>
+                    </div>
+                         {customRegisterForm}
+                    </div>
+                   
+                </div>
+                <div className=" hidden md:block">
+                {customRegisterForm}
+                </div>
+                
+               
             </div>
         </div>
     </div>
