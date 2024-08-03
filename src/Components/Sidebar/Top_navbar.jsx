@@ -6,11 +6,17 @@ import { IoEnterOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import Mobile_sidebar from "./Mobile_sidebar";
+import { ImCancelCircle } from "react-icons/im";
 
 
 const Top_navbar = () => {
 
     const isNotMobile = useMediaQuery({ query: '(min-width: 640px)' });
+
+    const [dropDown, setDropDown] = useState(false);
+   
     
     const { user ,logOut , setLoading } = useAuth();
 
@@ -70,6 +76,9 @@ const Top_navbar = () => {
           });
       };
 
+
+
+
     return (
         <div className="h-[60px] md:h-[88px] max-h-[88px]  w-full border-b-[1px] border-[#E7E7E7] flex justify-between items-center ">
             <div>
@@ -95,13 +104,30 @@ const Top_navbar = () => {
                             </div>
                             </div>) :   <div  className=" flex items-center gap-3 mr-4 mt-4">
                         <FiBell className=" w-[20px] h-[20px] " />
-                <div className=" h-6 w-6 border border-black flex items-center justify-center">
+                <div onClick={()=>setDropDown(true)} className=" h-6 w-6 border border-black flex items-center justify-center">
                 <HiMenuAlt3 />
                 </div>
                </div>
                }
-             
-               
+
+            <>
+                {dropDown && (
+                    <div className="fixed top-0 right-0 z-40">
+                        <div className="relative">
+                            <div className="absolute top-0 right-0">
+                                <Mobile_sidebar />
+                                <div onClick={() => setDropDown(false)} className="absolute top-5 right-5 z-50">
+                                    <ImCancelCircle className="w-5 h-5" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </>
+
+
+
+ 
            
         </div>
     );

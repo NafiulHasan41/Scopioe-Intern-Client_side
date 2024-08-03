@@ -25,6 +25,12 @@ const router = createBrowserRouter([
           path:"/new_listings",
           element:(<PrivateRoute><New_listing/></PrivateRoute>),
         }
+        ,
+        {
+          path:"/search",
+          
+        }
+
         
        
 
