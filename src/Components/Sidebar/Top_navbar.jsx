@@ -90,7 +90,7 @@ const Top_navbar = () => {
         <div className="h-[60px] md:h-[88px] max-h-[88px] w-full border-b-[1px] border-[#E7E7E7] flex justify-between items-center">
             <div>
                 {!isNotMobile ? (
-                    <img className="w-[60px] pl-[17px] py-[12px]" src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
+                    <img className="w-[90px] pl-[17px] py-[12px]" src="https://i.ibb.co/hDtnRkH/Therapy-Nest-Logo-removebg.png" alt="websiteLogo" />
                 ) : user ? userLogo : demoLogo}
             </div>
             {isNotMobile ? (
@@ -119,9 +119,9 @@ const Top_navbar = () => {
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center gap-3 mr-4 mt-4">
+                <div className="flex items-center gap-3 mr-4 ">
                     <FiBell className="w-[20px] h-[20px]" />
-                    <div onClick={() => setDropDown(true)} className="h-6 w-6 border border-black flex items-center justify-center">
+                    <div onClick={() => setDropDown(true)} className="h-7 w-7  flex items-center justify-center">
                         <HiMenuAlt3 />
                     </div>
                 </div>

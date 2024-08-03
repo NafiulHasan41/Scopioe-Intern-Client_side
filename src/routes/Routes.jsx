@@ -6,6 +6,7 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/Authentication/Login'
 import New_listing from '../Pages/New_Listing/New_listing'
 import Register from '../Pages/Authentication/Register'
+import TestimonialCard from '../Components/Card/TestimonialCard'
 
 
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         ,
         {
           path:"/search",
+          element:<TestimonialCard/>
           
         }
 
