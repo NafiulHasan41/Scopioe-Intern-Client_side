@@ -1,5 +1,7 @@
+import Testimonial from "../../Components/Slider/testimonial";
 import Featured_Therapist from "./Featured_Therapist";
 import Featured_Therapist2 from "./Featured_Therapist copy";
+import PopularCities from "./PopularCities";
 import SearchHome from "./SearchHome";
 
 
@@ -18,6 +20,18 @@ const Home = () => {
                     <Featured_Therapist2/>
                 </div>
                 
+            </div>
+            <div className="mt-[30px] flex flex-col lg:flex-row gap-7">
+
+                <div>
+                    <Testimonial/>
+                </div>
+
+                <div>
+                    <PopularCities/>
+                </div>
+
+
             </div>
         </div>
     );

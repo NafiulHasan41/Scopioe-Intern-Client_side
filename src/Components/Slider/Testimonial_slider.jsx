@@ -16,11 +16,11 @@ return (
             delay: 2000,
             disableOnInteraction: false,
           }} modules={[Autoplay , Pagination]} loop={true}
-        className="mySwiper md:max-h-[550px] md:max-w-[648px] max-h-[932px] max-w-[430px] w-full  md:h-[802px] md:rounded-2xl">
+        className="mySwiper h-[417px] w-[430px]  md:max-h-[429px] md:max-w-[550px]  md:w-full  md:h-[802px] md:rounded-2xl">
 
         <SwiperSlide>
 
-            <div>
+            <div className=' space-y-5'>
                 <div>
                     <div
                         className=" flex items-center gap-[15px] bg-white w-[398px] rounded-[10px]  md:w-[490px] h-[160px] ">
@@ -68,7 +68,7 @@ return (
         </SwiperSlide>
         <SwiperSlide>
 
-            <div>
+            <div className=' space-y-5'>
                 <div>
                     <div
                         className=" flex items-center gap-[15px] bg-white w-[398px] rounded-[10px]  md:w-[490px] h-[160px] ">
@@ -116,7 +116,7 @@ return (
         </SwiperSlide>
         <SwiperSlide>
 
-            <div>
+            <div className=' space-y-5'>
                 <div>
                     <div
                         className=" flex items-center gap-[15px] bg-white w-[398px] rounded-[10px]  md:w-[490px] h-[160px] ">
@@ -162,6 +162,7 @@ return (
             </div>
 
         </SwiperSlide>
+     
 
     </Swiper>
 </>
