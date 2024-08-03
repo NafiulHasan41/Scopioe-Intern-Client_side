@@ -6,6 +6,11 @@ import Home from '../Pages/Home/Home'
 import Login from '../Pages/Authentication/Login'
 import New_listing from '../Pages/New_Listing/New_listing'
 import Register from '../Pages/Authentication/Register'
+import Search from '../Pages/Search'
+import About from '../Pages/about'
+import Favorite from '../Pages/Favorite'
+import Help_center from '../Pages/Help_center'
+import Setting from '../Pages/Setting'
 
 
 
@@ -25,6 +30,35 @@ const router = createBrowserRouter([
         {
           path:"/new_listings",
           element:(<PrivateRoute><New_listing/></PrivateRoute>),
+        }
+        ,
+        
+        {
+          path:"/search",
+          element:(<PrivateRoute><Search/></PrivateRoute>),
+        }
+        ,
+        {
+          path:"/about",
+          element:(<PrivateRoute><About/></PrivateRoute>),
+        }
+        ,
+       
+        {
+          path:"/favorites",
+          element:(<PrivateRoute><Favorite/></PrivateRoute>),
+        }
+        ,
+       
+        {
+          path:"/help_center",
+          element:(<PrivateRoute><Help_center/></PrivateRoute>),
+        }
+        ,
+    
+        {
+          path:"/settings",
+          element:(<PrivateRoute><Setting/></PrivateRoute>),
         }
         ,
        

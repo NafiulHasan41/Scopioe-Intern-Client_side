@@ -58,7 +58,7 @@ const Sidebar_menu = () => {
                         </>
                            
                     }
-                    {/* shared nav links */}
+                    
                     <div className="divider my-[25px] divide-gray-500 w-[210px] mx-auto"></div>
                     <li>
                         <NavLink to="/help_center"  className={({ isActive }) =>
