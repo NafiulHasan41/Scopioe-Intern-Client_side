@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar_menu from "../Components/Sidebar/Sidebar_menu";
+import Top_navbar from "../Components/Sidebar/Top_navbar";
 
 
 const Root = () => {
@@ -12,11 +13,11 @@ const Root = () => {
                 </div>
                 <Sidebar_menu/>
             </div>
-            <div>
-                <div>
-                    {/* for top navigation */}
+            <div className=" flex-1 flex flex-col">
+                <div className="max-h-[88px] ">
+                    <Top_navbar/>
                 </div>
-                <div>
+                <div className="flex-1">
                   <Outlet/>
                 </div>
             </div>
