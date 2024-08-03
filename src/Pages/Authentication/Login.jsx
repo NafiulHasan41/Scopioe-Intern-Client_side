@@ -7,13 +7,14 @@ import { IoEye ,IoEyeOff } from "react-icons/io5";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import Auth_slider from "../../Components/Slider/Auth_slider";
+import Auth_Skeleton from "../Skeleton/Auth_Skeleton";
 
 
 
 const Login = () => {
 
 
-    const {  signIn , signInWithGoogle ,signInWithFacebook  } = useAuth();
+    const {  signIn , signInWithGoogle ,signInWithFacebook ,loading , setLoading } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -36,7 +37,8 @@ const Login = () => {
         title: msg,
         showConfirmButton: false,
         timer: 1500
-    })
+    });
+    setLoading(false);
        
     }
     
@@ -65,7 +67,7 @@ const Login = () => {
 
 
           } catch (err) {
-            console.log(err)
+            // console.log(err)
             onError(err);
           }
     }
@@ -87,7 +89,7 @@ const Login = () => {
               }
 
           } catch (err) {
-            console.log(err)
+            // console.log(err)
             onError(err);
           }
     }
@@ -109,7 +111,7 @@ const Login = () => {
               navigate(location?.state ? location.state.from : "/");
             }
           } catch (err) {
-            console.log(err)
+            // console.log(err)
             onError(err);
           }
     };
@@ -178,6 +180,12 @@ const Login = () => {
 
       </>
     );
+
+    if(loading){
+      return(
+          <Auth_Skeleton/>
+      );
+  }
 
 
   // it was confusing figma file, it took much time to understand the design of mobile login page but in the end I got it right, I think.

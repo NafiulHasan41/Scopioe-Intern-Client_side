@@ -29,7 +29,8 @@ const Register = () => {
           title: "User Created Successfully. Please Login",
           showConfirmButton: false,
           timer: 1000
-      })
+      });
+      setLoading(false);
     }
   
       const onError = (err) => { 
@@ -40,7 +41,9 @@ const Register = () => {
           title: err,
           showConfirmButton: false,
           timer: 1500
-      })
+      });
+
+      setLoading(false);
          
       }
 
