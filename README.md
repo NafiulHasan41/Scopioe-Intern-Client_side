@@ -5,7 +5,7 @@ The project main focus was your thinking level of creating dynamic design some p
 
 ## Live Link
 
-[Live Demo](https://scopioe-internship-therapist-website.netlify.app) (Replace `#` with the actual link)
+[Live Demo](https://scopioe-internship-therapist-website.netlify.app) 
 
 ## Features
 
